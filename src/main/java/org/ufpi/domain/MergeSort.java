@@ -1,13 +1,9 @@
-package org.ufpi;
+package org.ufpi.domain;
 
 import java.util.Arrays;
 
 
 public class MergeSort {
-    public static void main(String[] args) {
-        int [] numeros = {0,9,7,4,1,19,0,3,5};
-        System.out.println(mergeSort(numeros, 0, numeros.length-1));
-    }
 
     public static int merge(int [] numeros, int inicio, int meio, int fim){
         int count = 0;
