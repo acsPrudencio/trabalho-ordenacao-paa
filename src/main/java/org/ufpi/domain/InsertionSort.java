@@ -2,7 +2,7 @@ package org.ufpi.domain;
 
 public class InsertionSort {
 
-    public static int insertionSort(Integer[] numeros, int length){
+    public static int insertionSort(int[] numeros, int length){
         int count = 0;
         for (int i = 1; i<length; i++){
             int key = numeros[i];

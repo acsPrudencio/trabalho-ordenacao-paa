@@ -1,48 +1,50 @@
 package org.ufpi;
 
-import org.ufpi.domain.BubbleSort;
+import org.ufpi.domain.*;
+import org.ufpi.domain.enums.AlgoritmoEnum;
 
 import java.text.DecimalFormat;
 
 import static org.ufpi.util.GeradorNumeros.*;
-import static org.ufpi.util.GeradorNumeros.gerarNumerosCrescentes;
 
-public class RunBubbleSort {
+public class RunAlgoritmo {
     static double tempoExecucaoAleatorio = 0;
     static double tempoExecucaoCrescente = 0;
     static double tempoExecucaoDecrescente = 0;
     static double comparacoesAleatorio = 0;
     static double comparacoesCrescente = 0;
     static double comparacoesDecrescente = 0;
-    public void executa(int tamanho, int repeticoes) {
+    public static void executa(int tamanho, int repeticoes, AlgoritmoEnum algoritmo) {
         for (int i = 0; i < repeticoes; i++){
-            bubbleSort(tamanho);
+            processar(tamanho, algoritmo);
         }
-        String algoritmo = "BubbleSort";
         DecimalFormat df = new DecimalFormat("#.######");
+        DecimalFormat df2 = new DecimalFormat("#");
         System.out.println(algoritmo + ": Media tempo de execução aleatorios: " + df.format(tempoExecucaoAleatorio /3) + " segundos");
-        System.out.println(algoritmo + ": Media da quantidade de comparações aleatorios: " + comparacoesAleatorio /3);
+        System.out.println(algoritmo + ": Media da quantidade de comparações aleatorios: " + df2.format(comparacoesAleatorio/3));
 
         System.out.println(algoritmo + ": Media tempo de execução crescentes: " + df.format(tempoExecucaoCrescente) + " segundos");
-        System.out.println(algoritmo + ": Media da quantidade de comparações crescentes: " + comparacoesCrescente /3);
+        System.out.println(algoritmo + ": Media da quantidade de comparações crescentes: " + df2.format(comparacoesCrescente /3));
 
         System.out.println(algoritmo + ": Media tempo de execução decrecente: " + df.format(tempoExecucaoDecrescente /3) + " segundos");
-        System.out.println(algoritmo + ": Media da quantidade de comparações decrecente: " + comparacoesDecrescente /3);
+        System.out.println(algoritmo + ": Media da quantidade de comparações decrecente: " + df2.format(comparacoesDecrescente /3));
 
 
     }
-    public static void bubbleSort(int REPT) {
+    public static void processar(int TAM, AlgoritmoEnum algoritmo) {
 
         // gerar o vetor com numeros
 
-        int[] numerosAleatorios = gerarNumerosAleatorios(REPT);
-        int[] numerosCrescentes = gerarNumerosCrescentes(REPT);
-        int[] numerosDecrecente = gerarNumerosDecrescentes(REPT);
+        int[] numerosAleatorios = gerarNumerosAleatorios(TAM);
+        int[] numerosCrescentes = gerarNumerosCrescentes(TAM);
+        int[] numerosDecrecente = gerarNumerosDecrescentes(TAM);
 
         // pegar tempo atual do sistema
         long inicio = System.nanoTime();
         // chamar funcao de ordenacao
-        int comparacoes = BubbleSort.bubbleSort(numerosAleatorios, numerosAleatorios.length);
+        int comparacoes = 0;
+
+        comparacoes = ordenarVetor(algoritmo, numerosAleatorios);
         // pegar tempo atual do sistema
         long fim = System.nanoTime();
         // calcular diferenca entre os tempos
@@ -55,7 +57,7 @@ public class RunBubbleSort {
         // pegar tempo atual do sistema
         inicio = System.nanoTime();
         // chamar funcao de ordenacao
-        comparacoes = BubbleSort.bubbleSort(numerosCrescentes, numerosCrescentes.length);
+        comparacoes = ordenarVetor(algoritmo, numerosCrescentes);
         // pegar tempo atual do sistema
         fim = System.nanoTime();
         // calcular diferenca entre os tempos
@@ -66,7 +68,7 @@ public class RunBubbleSort {
         // pegar tempo atual do sistema
         inicio = System.nanoTime();
         // chamar funcao de ordenacao
-        comparacoes = BubbleSort.bubbleSort(numerosDecrecente, numerosDecrecente.length);
+        comparacoes = ordenarVetor(algoritmo, numerosDecrecente);
         // pegar tempo atual do sistema
         fim = System.nanoTime();
         // calcular diferenca entre os tempos
@@ -74,5 +76,17 @@ public class RunBubbleSort {
         tempoExecucaoDecrescente += tempoDeExecucao;
         comparacoesDecrescente += comparacoes;
 
+    }
+
+    private static int ordenarVetor(AlgoritmoEnum algoritmo, int[] vetor) {
+        int comparacoes = 0;
+        switch (algoritmo){
+            case BUBBLESORT -> comparacoes = BubbleSort.bubbleSort(vetor, vetor.length);
+            case HEAPSORT -> comparacoes = HeapSort.heapSort(vetor, vetor.length);
+            case INSERTIONSORT -> comparacoes = InsertionSort.insertionSort(vetor, vetor.length);
+            case MERGESORT -> comparacoes = MergeSort.mergeSort(vetor, 0, vetor.length-1);
+            case QUICKSORT -> comparacoes = QuickSort.quickSort(vetor, 0, vetor.length-1);
+        }
+        return comparacoes;
     }
 }

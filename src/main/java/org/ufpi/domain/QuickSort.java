@@ -4,7 +4,7 @@ package org.ufpi.domain;
 public class QuickSort {
     private static int iterCount = 0;
 
-    public static int quickSort(Integer[] arr, int low, int high) {
+    public static int quickSort(int[] arr, int low, int high) {
         if (low < high) {
             iterCount++;
             // pi é o índice da particion
@@ -17,7 +17,7 @@ public class QuickSort {
         return iterCount;
     }
 
-    private static int partition(Integer[] arr, int low, int high) {
+    private static int partition(int[] arr, int low, int high) {
         int pivot = arr[high];
         int i = (low - 1); // index do menor elemento
         for (int j = low; j < high; j++) {
@@ -38,7 +38,7 @@ public class QuickSort {
         return i + 1;
     }
 
-    public static int NewquickSort(Integer[] vetor, int inicio, int fim) {
+    public static int NewquickSort(int[] vetor, int inicio, int fim) {
         if(fim > inicio) {
             iterCount++;
             //Chamada da rotina que ira dividir o vetor em 3 partes.
@@ -54,7 +54,7 @@ public class QuickSort {
     }
 
 
-    private static int dividir(Integer[] vetor, int inicio, int fim) {
+    private static int dividir(int[] vetor, int inicio, int fim) {
         int pivo, pontEsq, pontDir = fim;
         pontEsq = inicio + 1;
         pivo = vetor[inicio];
@@ -91,7 +91,7 @@ public class QuickSort {
         trocar(vetor, inicio, pontDir);
         return pontDir;
     }
-    private static void trocar(Integer[] vetor, int i, int j) {
+    private static void trocar(int[] vetor, int i, int j) {
         int temp = vetor[i];
         vetor[i] = vetor[j];
         vetor[j] = temp;

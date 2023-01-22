@@ -2,7 +2,7 @@ package org.ufpi.domain;
 // CODIGO DO JOAO RODRIGUES
 public class HeapSort {
 
-    public static int heapSort(Integer[] arr, int n) {
+    public static int heapSort(int[] arr, int n) {
         int iterCount = 0;
         // Construir o heap (rearrange array)
         for (int i = n / 2 - 1; i >= 0; i--) {
@@ -20,7 +20,7 @@ public class HeapSort {
         return iterCount;
     }
 
-    private static int heapify(Integer[] arr, int n, int i) {
+    private static int heapify(int[] arr, int n, int i) {
         int iterCount = 0;
         int largest = i; // Inicializa como raiz
         int l = 2 * i + 1; // left = 2*i + 1
