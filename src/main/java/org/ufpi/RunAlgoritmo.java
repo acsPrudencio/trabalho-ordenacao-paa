@@ -4,6 +4,7 @@ import org.ufpi.domain.*;
 import org.ufpi.domain.enums.AlgoritmoEnum;
 
 import java.text.DecimalFormat;
+import java.util.Locale;
 
 import static org.ufpi.util.GeradorNumeros.*;
 
@@ -15,6 +16,8 @@ public class RunAlgoritmo {
     static double comparacoesCrescente = 0;
     static double comparacoesDecrescente = 0;
     public static void executa(int tamanho, int repeticoes, AlgoritmoEnum algoritmo) {
+        Locale.setDefault(Locale.forLanguageTag("en-US"));
+
         for (int i = 0; i < repeticoes; i++){
             processar(tamanho, algoritmo);
         }
