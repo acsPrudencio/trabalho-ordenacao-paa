@@ -3,6 +3,7 @@ package org.ufpi;
 import org.ufpi.domain.*;
 import org.ufpi.domain.enums.AlgoritmoEnum;
 
+import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.util.Locale;
 
@@ -12,9 +13,9 @@ public class RunAlgoritmo {
     static double tempoExecucaoAleatorio = 0;
     static double tempoExecucaoCrescente = 0;
     static double tempoExecucaoDecrescente = 0;
-    static double comparacoesAleatorio = 0;
-    static double comparacoesCrescente = 0;
-    static double comparacoesDecrescente = 0;
+    static BigInteger comparacoesAleatorio = BigInteger.ZERO;
+    static BigInteger comparacoesCrescente = BigInteger.ZERO;
+    static BigInteger comparacoesDecrescente = BigInteger.ZERO;
     public static void executa(int tamanho, int repeticoes, AlgoritmoEnum algoritmo) {
         Locale.setDefault(Locale.forLanguageTag("en-US"));
 
@@ -22,15 +23,14 @@ public class RunAlgoritmo {
             processar(tamanho, algoritmo);
         }
         DecimalFormat df = new DecimalFormat("#.######");
-        DecimalFormat df2 = new DecimalFormat("#");
         System.out.println(algoritmo + ": Media tempo de execução aleatorios: " + df.format(tempoExecucaoAleatorio /3) + " segundos");
-        System.out.println(algoritmo + ": Media da quantidade de comparações aleatorios: " + df2.format(comparacoesAleatorio/3));
+        System.out.println(algoritmo + ": Media da quantidade de comparações aleatorios: " + comparacoesAleatorio.divide(BigInteger.valueOf(3)));
 
         System.out.println(algoritmo + ": Media tempo de execução crescentes: " + df.format(tempoExecucaoCrescente) + " segundos");
-        System.out.println(algoritmo + ": Media da quantidade de comparações crescentes: " + df2.format(comparacoesCrescente /3));
+        System.out.println(algoritmo + ": Media da quantidade de comparações crescentes: " + comparacoesCrescente.divide(BigInteger.valueOf(3)));
 
         System.out.println(algoritmo + ": Media tempo de execução decrecente: " + df.format(tempoExecucaoDecrescente /3) + " segundos");
-        System.out.println(algoritmo + ": Media da quantidade de comparações decrecente: " + df2.format(comparacoesDecrescente /3));
+        System.out.println(algoritmo + ": Media da quantidade de comparações decrecente: " + comparacoesDecrescente.divide(BigInteger.valueOf(3)));
 
 
     }
@@ -54,7 +54,7 @@ public class RunAlgoritmo {
         DecimalFormat df = new DecimalFormat("#.######");
         double tempoDeExecucao = (fim - inicio) / 1000000000.0;
         tempoExecucaoAleatorio += tempoDeExecucao;
-        comparacoesAleatorio += comparacoes;
+        comparacoesAleatorio = comparacoesAleatorio.add(BigInteger.valueOf(comparacoes));
 
 
         // pegar tempo atual do sistema
@@ -66,7 +66,7 @@ public class RunAlgoritmo {
         // calcular diferenca entre os tempos
         tempoDeExecucao = (fim - inicio) / 1000000000.0;
         tempoExecucaoCrescente += tempoDeExecucao;
-        comparacoesCrescente += comparacoes;
+        comparacoesCrescente = comparacoesCrescente.add(BigInteger.valueOf(comparacoes));
 
         // pegar tempo atual do sistema
         inicio = System.nanoTime();
@@ -77,7 +77,7 @@ public class RunAlgoritmo {
         // calcular diferenca entre os tempos
         tempoDeExecucao = (fim - inicio) / 1000000000.0;
         tempoExecucaoDecrescente += tempoDeExecucao;
-        comparacoesDecrescente += comparacoes;
+        comparacoesDecrescente = comparacoesDecrescente.add(BigInteger.valueOf(comparacoes));
 
     }
 
