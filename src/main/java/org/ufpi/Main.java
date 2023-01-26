@@ -10,7 +10,8 @@ public class Main {
         RunAlgoritmo.executa(TAM,REPT, AlgoritmoEnum.BUBBLESORT);
         RunAlgoritmo.executa(TAM,REPT, AlgoritmoEnum.HEAPSORT);
         RunAlgoritmo.executa(TAM,REPT, AlgoritmoEnum.INSERTIONSORT);
-        RunAlgoritmo.executa(TAM,REPT, AlgoritmoEnum.QUICKSORT);
         RunAlgoritmo.executa(TAM,REPT, AlgoritmoEnum.MERGESORT);
+        RunAlgoritmo.executa(TAM,REPT, AlgoritmoEnum.QUICKSORT);
+
     }
 }
