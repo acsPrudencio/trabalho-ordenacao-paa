@@ -1,13 +1,16 @@
 package org.ufpi.domain;
 
+import java.math.BigDecimal;
 import java.util.Random;
 
 public class QuickSort {
-    private static int iterCount = 0;
+    private static BigDecimal iterCount = BigDecimal.ZERO;
 
-    public static int quickSort(int[] A, int p, int r) {
+    public static BigDecimal quickSort(int[] A, int p, int r) {
+        BigDecimal iterCount = BigDecimal.ZERO;
+
         if (p < r) {
-            iterCount++;
+            iterCount = iterCount.add(BigDecimal.valueOf(1));
             // q é o índice da particion
             int q = partitionRandomized(A, p, r);
             // Recursivamente ordenar elementos antes e depois
@@ -24,7 +27,7 @@ public class QuickSort {
         for (int j = low; j < high; j++) {
             // Se o elemento atual é menor ou igual ao pivot
             if (arr[j] <= pivot) {
-                iterCount++;
+                iterCount = iterCount.add(BigDecimal.valueOf(1));
                 i++;
                 // Troca
                 int temp = arr[i];
@@ -40,8 +43,8 @@ public class QuickSort {
     }
 
     private static int partitionRandomized(int[] A, int p, int r) {
-        int i = new Random().nextInt(p,r);
-        iterCount++;
+        int i = new Random().nextInt(p, r);
+        iterCount = iterCount.add(BigDecimal.valueOf(1));
         int temp = A[r];
         A[r] = A[i];
         A[i] = temp;
