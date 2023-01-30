@@ -5,5 +5,6 @@ public enum AlgoritmoEnum {
     HEAPSORT,
     INSERTIONSORT,
     MERGESORT,
-    QUICKSORT;
+    QUICKSORT,
+    HIBRIDO;
 }

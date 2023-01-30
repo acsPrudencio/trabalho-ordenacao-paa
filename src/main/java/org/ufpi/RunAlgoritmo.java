@@ -84,6 +84,7 @@ public class RunAlgoritmo {
             case INSERTIONSORT -> comparacoes = InsertionSort.insertionSort(vetor, vetor.length);
             case MERGESORT -> comparacoes = MergeSort.mergeSort(vetor, 0, vetor.length - 1);
             case QUICKSORT -> comparacoes = QuickSort.quickSort(vetor, 0, vetor.length - 1);
+            case HIBRIDO -> comparacoes = Hibrido.hibrido(vetor,vetor.length);
         }
         return comparacoes;
     }
