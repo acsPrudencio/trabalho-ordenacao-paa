@@ -37,7 +37,7 @@ public class RunAlgoritmo {
         List<TabelaLayout> dadosProcessado = new ArrayList<>();
         dadosProcessado.add(new TabelaLayout(algoritmo.toString() + " Aleatorio: ", tempoExecucaoAleatorio.divide(BigDecimal.valueOf(3), 10, RoundingMode.HALF_UP), comparacoesAleatorio.divide(BigDecimal.valueOf(3), 0, RoundingMode.HALF_UP)));
         dadosProcessado.add(new TabelaLayout(algoritmo.toString() + " Crescente: ", tempoExecucaoCrescente.divide(BigDecimal.valueOf(3), 10, RoundingMode.HALF_UP), comparacoesCrescente.divide(BigDecimal.valueOf(3), 0, RoundingMode.HALF_UP)));
-        dadosProcessado.add(new TabelaLayout(algoritmo.toString() + " Decrescente: ", tempoExecucaoAleatorio.divide(BigDecimal.valueOf(3), 10, RoundingMode.HALF_UP), comparacoesDecrescente.divide(BigDecimal.valueOf(3), 0, RoundingMode.HALF_UP)));
+        dadosProcessado.add(new TabelaLayout(algoritmo.toString() + " Decrescente: ", tempoExecucaoDecrescente.divide(BigDecimal.valueOf(3), 10, RoundingMode.HALF_UP), comparacoesDecrescente.divide(BigDecimal.valueOf(3), 0, RoundingMode.HALF_UP)));
 
         return dadosProcessado;
 

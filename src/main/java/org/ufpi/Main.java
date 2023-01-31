@@ -17,7 +17,7 @@ public class Main {
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("TabelaComparacoes");
 
-        List<Integer> exec = new ArrayList<>(Arrays.asList(100, 500, 1000, 5000, 30000, 50000, 100000, 150000, 200000));
+        List<Integer> exec = new ArrayList<>(Arrays.asList(100, 1000, 5000, 30000, 50000, 100000, 150000, 200000));
 
         exec.stream().forEach(TAM -> {
             int REPT = 3;
